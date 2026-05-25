@@ -29,16 +29,7 @@ public class Game {
 
         // Create drawing canvas
         canvas = new GridCanvas(boundary, 10, "GridCanvas Example");
-
         canvas.showInWindow();
-
-        // Batch drawing example
-        coinPositions = new ArrayList<>();
-
-        coinPositions.add(new Position(1, 1));
-        coinPositions.add(new Position(8, 5));
-        coinPositions.add(new Position(11, 5));
-        coinPositions.add(new Position(14, 5));
     }
 
     public void run() {
@@ -66,7 +57,7 @@ public class Game {
             // -------------------------------------
             try {
                 Thread.sleep(100);
-            } catch (InterruptedException e) {
+                } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
 
@@ -93,6 +84,13 @@ public class Game {
 
         // logic to move enemy automatically
         enemy.moveLeft(boundary);
+
+        // Example of creating an ArrayList of coins
+        coinPositions = new ArrayList<Position>();
+        coinPositions.add(new Position(1, 1));
+        coinPositions.add(new Position(8, 5));
+        coinPositions.add(new Position(11, 5));
+        coinPositions.add(new Position(14, 5));
     }
 
     private void redrawVisuals() {
@@ -104,7 +102,7 @@ public class Game {
         // Enemy
         canvas.drawOval(enemy.getPosition(), enemy.getSize(), Color.BLUE, GridCanvas.DrawStyle.OUTLINED);
 
-        // Coins
+        // Drawing Coins from an ArrayList
         canvas.drawOvals(coinPositions, new Size(1, 1), Color.YELLOW, GridCanvas.DrawStyle.FILLED);
 
         // Line example
